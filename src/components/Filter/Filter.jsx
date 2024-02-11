@@ -1,24 +1,23 @@
+import { LabelFilter, InputFilter } from './Filter.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectFilter } from 'redux/filter/selectors';
-import { changeFilter } from 'redux/filter/filterSlice';
-import { Wrapper, Input, Label } from './Filter.styled';
+import { getFilterValue } from 'redux/Contact/selectors';
+import { setFilter } from 'redux/Contact/filterSlice';
 
-// Компонент Filter відповідає за фільтрацію списку контактів за ім'ям
 export const Filter = () => {
-  const value = useSelector(selectFilter); // Отримуємо поточне значення фільтра зі стану
-  const dispatch = useDispatch(); // Отримуємо функцію dispatch з Redux для зміни фільтра
-
-  // Обробник зміни значення фільтра
-  const onChange = event => {
-    const normalizedValue = event.target.value.toLowerCase();
-
-    dispatch(changeFilter(normalizedValue)); // Викликаємо дію changeFilter, яка змінює значення фільтра в Redux store
-  };
-
+    const filterValue = useSelector(getFilterValue)
+    const dispatch = useDispatch();
+    
   return (
-    <Wrapper>
-      <Label>Find contacts by name</Label>
-      <Input type="text" value={value} onChange={onChange} />
-    </Wrapper>
-  );
+    <div>
+        <LabelFilter >Find contacts by name</LabelFilter>
+
+        <InputFilter
+              type="text"
+              value={filterValue}
+              name="filter"
+              onChange={(e) => dispatch(setFilter(e.target.value))}
+        />
+    </div>
+        );
 };
+

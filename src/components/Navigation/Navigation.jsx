@@ -1,15 +1,12 @@
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from 'hooks/hooks';
 import { Link } from './Navigation.styled';
 
-// Компонент Navigation відповідає за навігаційне меню
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
-
   return (
     <nav>
-      <Link to="/">Home</Link> {/* Посилання на головну сторінку */}
-      {isLoggedIn && <Link to="/contacts">Contacts</Link>}{' '}
-      {/* Посилання на сторінку контактів, доступне тільки для авторизованих користувачів */}
+      <Link to="/">Home</Link>
+      {isLoggedIn && <Link to="/contacts">Contacts</Link>}
     </nav>
   );
 };

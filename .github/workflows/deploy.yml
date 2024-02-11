@@ -28,7 +28,3 @@ jobs:
           branch: gh-pages
           folder: build  # Adjust this path based on your project structure
     
-      - name: Налаштування Git
-        run: |
-          git remote rm origin
-          git remote add origin https://github.com/AndrijAyzy/goit-react-hw-08-phonebook.git

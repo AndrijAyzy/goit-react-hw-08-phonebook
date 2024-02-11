@@ -1,22 +1,16 @@
 import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/auth/operations';
-import { selectUser } from 'redux/auth/selectors';
-import { useSelector } from 'react-redux';
-import { Wrapper, Text, Button } from './UserMenu.styled';
+import { useAuth } from 'hooks/hooks';
+import { logOut } from 'redux/Auth/auth.thunk';
+import { Button, UserMenuTitle, Container } from './UserMenu.styled';
 
-// Компонент UserMenu відповідає за меню користувача, якщо користувач авторизований
 export const UserMenu = () => {
-  const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const { user } = useAuth();
 
   return (
-    <Wrapper>
-      <Text>Welcome to Phonebook {user.name} </Text>{' '}
-      {/* Відображення привітання з ім'ям користувача */}
-      <Button type="button" onClick={() => dispatch(logOut())}>
-        Logout
-      </Button>{' '}
-      {/* Кнопка для виходу з облікового запису користувача */}
-    </Wrapper>
+    <Container>
+      <UserMenuTitle>Welcome, {user.name} </UserMenuTitle>
+      <Button onClick={() => dispatch(logOut())}>Log Out</Button>
+    </Container>
   );
 };
