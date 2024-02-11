@@ -23,7 +23,6 @@ export default function HomePage() {
           <Text fontSize="3xl" fontWeight="300" textAlign="center" mt={10}>
             {isAuth ? (
               <>
-                <span>go to my </span>
                 <ChakraLink
                   fontStyle="italic"
                   color="GrayText"
