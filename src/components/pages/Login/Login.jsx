@@ -73,7 +73,7 @@ const Login = () => {
             )}
           </Field>
 
-          <Button type="submit" size="md" mt={5} colorScheme="yellow">
+          <Button type="submit" size="md" mt={5} colorScheme="#0fd3ff">
             Log in
           </Button>
         </Form>

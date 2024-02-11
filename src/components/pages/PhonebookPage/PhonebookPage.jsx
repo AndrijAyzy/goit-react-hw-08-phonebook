@@ -9,12 +9,12 @@ const PhonebookPage = () => {
   const { isLoading, error } = useSelector(getContacts);
   return (
     <Container>
-      <Box bgColor='blue.400' borderRadius={4}>
-      <Text as='i' fontSize='4xl' ml={5} fontWeight='700'>Phonebook</Text>
+      <Box bgColor='#0fd3ff' borderRadius={4}>
+      <Text as='n' fontSize='4xl' ml={150} fontWeight='700'>Phonebook</Text>
       <ContactForm />
       </Box>
-      <Box bgColor='yellow.400' borderRadius={4}>
-      <Text as='i' fontSize='4xl' ml={5} fontWeight='600'>Contacts</Text>
+      <Box bgColor='#ffffff' borderRadius={4}>
+      <Text as='n' fontSize='4xl' ml={170} fontWeight='600'>Contacts</Text>
       {isLoading && <div style={{marginLeft: '30px'}}>Loading...</div>}
       {error && <div>{error.message}</div>}
       <Filter />

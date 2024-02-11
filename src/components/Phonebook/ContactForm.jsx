@@ -58,7 +58,7 @@ export const ContactForm = () => {
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
               />
-              <Button colorScheme="yellow" size="sm" type="submit" mb={5}>
+              <Button colorScheme="green" size="sm" type="submit" ml={5} width={400} mt={10} mb={10}>
                 Add contact
               </Button>
             </StyledForm>

@@ -9,7 +9,7 @@ export const Header = () => {
     
     return (
         <Container maxW='100%'>
-        <Box as="header" bg="yellow.200" boxShadow="2xl" p="5" rounded="sx" mb="30px">
+        <Box as="header" bg="#ff8f0f" boxShadow="2xl" p="5" rounded="sx" mb="30px">
                 <Box
                     as="nav"
                     display="flex"
@@ -19,7 +19,7 @@ export const Header = () => {
                 >
                     <ChakraLink fontSize="21" as={ReactRouterLink} to="/">Home</ChakraLink>
                         {isAuth ? <>
-                            <ChakraLink fontSize="20" as={ReactRouterLink} to="/contacts">PHONEBOOK</ChakraLink>
+                            <ChakraLink fontSize="20" as={ReactRouterLink} to="/contacts">Phonebook</ChakraLink>
                             <UserMenu />
                             
                         </>

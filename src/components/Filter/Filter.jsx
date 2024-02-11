@@ -14,7 +14,7 @@ export const Filter = () => {
 
   return contacts.length !== 0 ? (
     <FilterSection>
-      <label>Find contacts by name:
+      <label>Filter
       <input
         type="text"
         name="filter"

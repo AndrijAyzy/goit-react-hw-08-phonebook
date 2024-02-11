@@ -23,7 +23,7 @@ export const UserMenu = () => {
       gap="5"
     >
       <Text fontSize="18">{user?.email}</Text>
-      <Button colorScheme="telegram" variant="outline" onClick={handleLogout}>
+      <Button colorScheme="green" variant="outline" onClick={handleLogout}>
         Logout
       </Button>
     </Box>

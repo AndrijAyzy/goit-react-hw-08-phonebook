@@ -33,7 +33,7 @@ export const ContactList = () => {
             <Text as='samp' fontSize='xl' ml={5} fontWeight='500' textTransform='capitalize'>
               {name}: {number}
             </Text>
-            <Button size='sm' colorScheme='messenger' type="button" onClick={() => handleDeleteContact(id)}>
+            <Button size='sm' colorScheme='red' type="button" onClick={() => handleDeleteContact(id)}>
               Delete
             </Button>
           </li>
