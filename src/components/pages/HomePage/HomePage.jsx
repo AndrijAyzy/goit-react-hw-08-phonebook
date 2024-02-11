@@ -1,7 +1,6 @@
 import { Box, Container } from '@chakra-ui/react';
 import { Heading } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { getAuth } from 'components/redux/selectors';
 
 export default function HomePage() {
   const isAuth = useSelector(getAuth);
