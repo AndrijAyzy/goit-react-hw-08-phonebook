@@ -1,30 +1,45 @@
-import { List, Item, Button } from './ContactList.styled';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/Contact/operations';
-import { getAllContacts } from 'redux/Contact/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import {  getFilteredContacts } from '../redux/selectors';
+import { useEffect } from 'react';
+import { delContactThunk, getAllContactsThunk } from 'components/redux/thunks';
+import { toast } from 'react-hot-toast';
+import { Button, Text } from '@chakra-ui/react';
+import { ContactsList } from './ContactList.styled';
+
 
 export const ContactList = () => {
-    const contacts = useSelector(getAllContacts);
-    const dispatch = useDispatch();
+  const notify = () =>
+    toast.error('Contact was successfully deleted from your contacts list.');
+  const dispatch = useDispatch()
+  const filteredContacts = useSelector(getFilteredContacts)
 
-    return (
-        <>
-            <List >
-                {contacts.map(({ name, id, number }) => {
-                    return (
-                        <Item
-                            key={id}>
-                            {name} : {number}
-                            <Button
-                                type="button"
-                                onClick={() => dispatch(deleteContact(id))}
-                            >
-                                Delete
-                            </Button>
-                        </Item>
-                    );
-                })}
-            </List>
-        </>
-    );
+  useEffect(() => {
+    dispatch(getAllContactsThunk())
+  }, [dispatch])
+
+  const handleDeleteContact = id => {
+    dispatch(delContactThunk(id))
+      .unwrap()
+      .then(() => {
+        notify();
+      });
+  };
+
+  return (
+    <ContactsList>
+      {filteredContacts?.map(({ id, name, number }) => {
+        return (
+          <li key={id}>
+            <Text as='samp' fontSize='xl' ml={5} fontWeight='500' textTransform='capitalize'>
+              {name}: {number}
+            </Text>
+            <Button size='sm' colorScheme='messenger' type="button" onClick={() => handleDeleteContact(id)}>
+              Delete
+            </Button>
+          </li>
+        );
+      })}
+    </ContactsList>
+  );
 };
+

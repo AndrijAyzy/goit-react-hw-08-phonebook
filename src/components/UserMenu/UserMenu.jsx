@@ -1,16 +1,31 @@
-import { useDispatch } from 'react-redux';
-import { useAuth } from 'hooks/hooks';
-import { logOut } from 'redux/Auth/auth.thunk';
-import { Button, UserMenuTitle, Container } from './UserMenu.styled';
+import { Box, Button, Text } from '@chakra-ui/react';
+import { profileSelect } from 'components/redux/selectors';
+import { logoutThunk } from 'components/redux/thunks';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const UserMenu = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useAuth();
+  const user = useSelector(profileSelect);
+
+  const handleLogout = () => {
+    dispatch(logoutThunk());
+    navigate('/login');
+  };
 
   return (
-    <Container>
-      <UserMenuTitle>Welcome, {user.name} </UserMenuTitle>
-      <Button onClick={() => dispatch(logOut())}>Log Out</Button>
-    </Container>
+    <Box
+      ml="auto"
+      display="flex"
+      justifyContent="center"
+      alignItems="baseline"
+      gap="5"
+    >
+      <Text fontSize="18">{user?.email}</Text>
+      <Button colorScheme="telegram" variant="outline" onClick={handleLogout}>
+        Logout
+      </Button>
+    </Box>
   );
 };

@@ -1,36 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const List = styled.ul`
+export const ContactsList = styled.ul`
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 10px;  
+
+  li {
+    max-width: 465px;
+    height: auto;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-`; 
+    justify-content: space-between;
 
-export const Item = styled.li`
-    font-family: Cambria;
-    font-weight: 500;
-    font-size: 24px;
-
-    display: flex;
-    justify-content:space-between;
-`; 
-
-export const Button = styled.button`
-    cursor: pointer;
-    border-radius: 5px;
-    border: 2px solid gray;
-
-    padding: 5px;
-
-    text-align: center;
-    font-family: Cambria;
-    font-weight: 700;
-    font-size: 24px;
-    &:active, 
-    &:hover,
-    &:focus {
-        background-color: orangered;
-        color: white;
-        border-color: none;
-}`; 
-
+  }
+`;
