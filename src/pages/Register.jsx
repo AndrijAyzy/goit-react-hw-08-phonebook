@@ -1,16 +1,11 @@
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 
-import { RegisterForm } from 'components/Forms/RegisterForm';
-
-const helmetContext = {};
-
+// Компонент Register відповідає за відображення сторінки реєстрації
 export default function Register() {
   return (
-    <HelmetProvider context={helmetContext}>
-      <Helmet>
-        <title>Register</title>{' '}
-      </Helmet>
-      <RegisterForm />
-    </HelmetProvider>
+    <>
+      <title>Registration</title>
+      <RegisterForm /> {/* Відображення форми для реєстрації */}
+    </>
   );
 }

@@ -1,16 +1,11 @@
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { LoginForm } from 'components/LoginForm/LoginForm';
 
-import { LoginForm } from 'components/Forms/LoginForm';
-
-const helmetContext = {};
-
+// Компонент Login відповідає за відображення сторінки входу в систему
 export default function Login() {
   return (
-    <HelmetProvider context={helmetContext}>
-      <Helmet>
-        <title>Log in</title>
-      </Helmet>
-      <LoginForm />
-    </HelmetProvider>
+    <>
+      <title>Login</title>
+      <LoginForm /> {/* Відображення форми для входу в систему */}
+    </>
   );
 }

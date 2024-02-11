@@ -1,63 +1,75 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+
+axios.defaults.baseURL = 'https://phonebook-db-2lk4.onrender.com/';
 
 const setAuthHeader = token => {
+  // Встановлення заголовка авторизації у вихідних параметрах запиту
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthHeader = () => {
+  // Очищення заголовка авторизації
   axios.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (values, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
-      const respons = await axios.post('/users/signup', values);
-      setAuthHeader(respons.data.token);
-      return respons.data;
+      // Виконання POST-запиту на реєстрацію користувача
+      const res = await axios.post('/users/register', credentials); //signup
+      console.log(res.data);
+      setAuthHeader(res.data.token); // Встановлення отриманого токена авторизації у заголовок
+      return res.data; // Повернення даних з відповіді сервера
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message); // Обробка помилки із викликом rejectWithValue
     }
   }
 );
 
 export const logIn = createAsyncThunk(
   'auth/login',
-  async (values, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
-      const respons = await axios.post('/users/login', values);
-      setAuthHeader(respons.data.token);
-      return respons.data;
+      // Виконання POST-запиту на авторизацію користувача
+      const res = await axios.post('/users/login', credentials);
+      setAuthHeader(res.data.token); // Встановлення отриманого токена авторизації у заголовок
+      return res.data; // Повернення даних з відповіді сервера
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message); // Обробка помилки із викликом rejectWithValue
     }
   }
 );
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
+    // Виконання POST-запиту на виход користувача
     await axios.post('/users/logout');
-    clearAuthHeader();
+    clearAuthHeader(); // Очищення заголовка авторизації
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.message); // Обробка помилки із викликом rejectWithValue
   }
 });
 
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const { token } = thunkAPI.getState().auth;
-    if (!token) return thunkAPI.rejectWithValue('Unable to fetch user');
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
 
-    setAuthHeader(token);
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user'); // Помилка, якщо токен не збережений у стані
+    }
+
     try {
-      const respons = await axios.get('/users/current');
-      return respons.data;
+      setAuthHeader(persistedToken); // Встановлення збереженого токена авторизації у заголовок
+      const res = await axios.get('/users/current'); // Виконання GET-запиту для отримання інформації про користувача
+      return res.data; // Повернення даних з відповіді сервера
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message); // Обробка помилки із викликом rejectWithValue
     }
   }
 );
