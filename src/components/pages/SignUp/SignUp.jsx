@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { signUpThunk } from "components/redux/thunks";
+import { signUpThunk } from "redux/thunks";
 import { Button, Container, FormControl, FormErrorMessage, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';

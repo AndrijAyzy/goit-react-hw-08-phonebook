@@ -1,7 +1,7 @@
 import { ColorRing } from 'react-loader-spinner';
 import { StyledLoader } from './Loader.styled';
 import { useSelector } from 'react-redux';
-import { selectIsLoading } from 'components/redux/selectors';
+import { selectIsLoading } from 'redux/selectors';
 
 export const Loader = () => {
   const isLoading = useSelector(selectIsLoading);

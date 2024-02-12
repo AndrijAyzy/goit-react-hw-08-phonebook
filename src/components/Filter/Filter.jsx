@@ -1,7 +1,7 @@
 import { NotificationMessage } from '../NotificationMessage/NotificationMessage';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../redux/selectors';
-import { filterContacts } from '../redux/filtersSlice';
+import { getContacts } from 'redux/selectors';
+import { filterContacts } from 'redux/filtersSlice';
 import { FilterSection } from './Filter.styled';
 
 export const Filter = () => {

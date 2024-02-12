@@ -1,6 +1,6 @@
 import { Box, Button, Text } from '@chakra-ui/react';
-import { profileSelect } from 'components/redux/selectors';
-import { logoutThunk } from 'components/redux/thunks';
+import { profileSelect } from 'redux/selectors';
+import { logoutThunk } from 'redux/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 

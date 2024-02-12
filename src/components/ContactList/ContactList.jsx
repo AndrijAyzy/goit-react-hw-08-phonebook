@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {  getFilteredContacts } from '../redux/selectors';
+import {  getFilteredContacts } from 'redux/selectors';
 import { useEffect } from 'react';
-import { delContactThunk, getAllContactsThunk } from 'components/redux/thunks';
+import { delContactThunk, getAllContactsThunk } from 'redux/thunks';
 import { toast } from 'react-hot-toast';
 import { Button, Text } from '@chakra-ui/react';
 import { ContactsList } from './ContactList.styled';

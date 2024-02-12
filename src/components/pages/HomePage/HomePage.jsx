@@ -4,7 +4,7 @@ import { Text } from '@chakra-ui/react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { getAuth } from 'components/redux/selectors';
+import { getAuth } from 'redux/selectors';
 
 export default function HomePage() {
   const isAuth = useSelector(getAuth);

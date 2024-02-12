@@ -1,4 +1,4 @@
-import { getAuth, selectRefreshing } from 'components/redux/selectors';
+import { getAuth, selectRefreshing } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 

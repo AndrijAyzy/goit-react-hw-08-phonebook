@@ -1,4 +1,4 @@
-import { loginThunk } from "components/redux/thunks";
+import { loginThunk } from "redux/thunks";
 import { useDispatch } from "react-redux";
 import { Button, Container, FormControl, FormErrorMessage, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
 import { Formik, Form, Field } from 'formik';

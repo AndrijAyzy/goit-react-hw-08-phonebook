@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { getAuth } from "components/redux/selectors";
+import { getAuth } from "redux/selectors";
 import { UserMenu } from "components/UserMenu/UserMenu";
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Box, Link as ChakraLink, Container } from '@chakra-ui/react'

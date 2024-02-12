@@ -2,7 +2,7 @@ import { ContactForm } from '../../Phonebook/ContactForm';
 import { Filter } from '../../Filter/Filter';
 import { ContactList } from '../../ContactList/ContactList';
 import { useSelector } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
+import { getContacts } from 'redux/selectors';
 import { Box, Container, Text } from '@chakra-ui/react';
 
 const PhonebookPage = () => {
