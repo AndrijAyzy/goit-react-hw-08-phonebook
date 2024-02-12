@@ -1,6 +1,7 @@
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "components/redux/selectors";
-import { addContactThunk } from "components/redux/thunks";
+import { getContacts } from "redux/selectors";
+import { addContactThunk } from "redux/thunks";
 import toast, { Toaster } from 'react-hot-toast';
 import { Formik, Field, Form } from 'formik';
 import { Button, FormLabel } from '@chakra-ui/react';
