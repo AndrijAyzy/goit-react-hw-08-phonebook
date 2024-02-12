@@ -33,7 +33,6 @@ export const ContactForm = () => {
           })
           .catch(error => {
             console.error('Error adding contact:', error);
-            // Тут ви можете вивести повідомлення про помилку користувачеві
           });
       }
     },
